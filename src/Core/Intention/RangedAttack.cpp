@@ -14,11 +14,11 @@ bool RangedAttack::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> crea
 		auto d = map->distance(creature->getId(), target->getId());
 		if (d > 1 && d <= range)
 		{
-			target->takeDamage(agility);
-			std::cout << "Hunter " << creature->getId() << " remotely attacked " << target->getId() << std::endl;
+			target->takeDamage(power);
+			std::cout << "Unit " << creature->getId() << " remotely attacked " << target->getId() << std::endl;
 			return true;
 		}
 	}
-	std::cout << "Hunter " << creature->getId() << " has no eligible units for remote attack" << std::endl;
+	std::cout << "Unit " << creature->getId() << " has no eligible targets for remote attack" << std::endl;
 	return false;
 }

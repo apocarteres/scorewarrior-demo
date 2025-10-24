@@ -9,6 +9,7 @@ class Creature
 {
 	uint32_t id;
 	int hp;
+	const int maxHp;
 	bool is_remote_attackable;
 	bool is_melee_attackable;
 	bool is_rigid;
@@ -23,7 +24,7 @@ public:
 		bool is_rigid,
 		const std::string& name) :
 			id(id),
-			hp(hp),
+			hp(hp), maxHp(hp),
 			is_remote_attackable(is_remote_attackable),
 			is_melee_attackable(is_melee_attackable),
 			is_rigid(is_rigid),
@@ -33,6 +34,8 @@ public:
 	}
 
 	bool takeDamage(int damage);
+
+	bool restoreHp(int spirit);
 
 	[[nodiscard]]
 	std::string getName() const;

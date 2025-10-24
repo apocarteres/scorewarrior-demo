@@ -5,15 +5,13 @@
 
 class RangedAttack : public Intention
 {
-	int agility;
-	int strength;
+	int power;
 	int range;
 
 public:
-	RangedAttack(int agility, int strength, int range, const CreaturePtr& creature) :
+	RangedAttack(int power, int range, const CreaturePtr& creature) :
 			Intention(creature),
-			agility(agility),
-			strength(strength),
+			power(power),
 			range(range)
 	{}
 

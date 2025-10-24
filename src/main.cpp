@@ -1,5 +1,6 @@
 #include "Core/Creature.h"
 #include "Core/Game.h"
+#include "Features/Creatures/Healer.h"
 #include "Features/Creatures/Hunter.h"
 #include "Features/Creatures/Swordsman.h"
 #include "IO/System/TypeRegistry.hpp"
@@ -44,7 +45,9 @@ int main(int argc, char** argv)
 	game.createMap(10, 10);
 	game.spawn(Swordsman{1, 10, 5}, 5, 5);
 	game.spawn(Swordsman{2, 10, 5}, 1, 8);
-	game.spawn(Hunter{3, 10, 2, 5, 10}, 2, 2);
+	game.spawn(Hunter{3, 10, 2, 5, 3}, 2, 2);
+	game.spawn(Healer{4, 10, 2}, 5, 7);
+	game.march(4, 0,0 );
 
 	std::cout << "Game started" << std::endl;
 	game.debug();

@@ -18,31 +18,12 @@ protected:
 public:
 	CreaturePtr creature;
 
-	bool turn(Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures)
-	{
-		for (auto& intention : intentions)
-		{
-			if (intention->exec(map, creatures))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
+	bool turn(Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures);
 
 	[[nodiscard]]
-	uint32_t getId() const
-	{
-		return creature->getId();
-	}
+	uint32_t getId() const;
 
-	void move(int target_x, int target_y)
-	{
-		std::erase_if(
-			intentions,
-			[](const std::unique_ptr<Intention>& ptr) { return dynamic_cast<ChangePosition*>(ptr.get()) != nullptr; });
-		intentions.push_back(std::make_unique<ChangePosition>(target_x, target_y, creature));
-	}
+	void move(int target_x, int target_y);
 };
 
 typedef std::unique_ptr<Character> CharacterPtr;

@@ -45,3 +45,17 @@ bool Creature::takeDamage(int damage)
 	}
 	return true;
 }
+
+bool Creature::restoreHp(int spirit)
+{
+	if (hp == maxHp)
+	{
+		return false;
+	}
+	hp+= spirit;
+	if (hp > maxHp)
+	{
+		hp = maxHp;
+	}
+	return true;
+}

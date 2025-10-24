@@ -68,6 +68,10 @@ uint32_t Game::getTick() const
 void Game::debug()
 {
 	map->print();
+	for (auto& [id, character] : characters)
+	{
+		std::cout << "Unit " << character->getId() << " HP: " << character->creature->getHp() << std::endl;
+	}
 }
 
 void Game::march(uint32_t id, int target_x, int target_y)
