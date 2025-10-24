@@ -90,8 +90,9 @@ bool Map::move(uint32_t id, int dst_x, int dst_y, int step)
 	{
 		release(id);
 		occupy(id, object.rigid, src_x, src_y);
+		return true;
 	}
-	return move_required;
+	return false;
 }
 
 Object Map::lookupObject(uint32_t id) const

@@ -1,8 +1,5 @@
 #include "Core/Creature.h"
 #include "Core/Game.h"
-#include "Core/Intention/Intention.h"
-#include "Core/Intention/MeleeAttack.h"
-#include "Core/Map.h"
 #include "Features/Creatures/Hunter.h"
 #include "Features/Creatures/Swordsman.h"
 #include "IO/System/TypeRegistry.hpp"
@@ -24,8 +21,12 @@
 #include <fstream>
 #include <iostream>
 
+void runUnitTests();
+
 int main(int argc, char** argv)
 {
+	runUnitTests();
+
 	using namespace sw;
 
 	if (argc != 2)
