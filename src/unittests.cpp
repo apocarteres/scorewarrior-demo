@@ -169,11 +169,9 @@ void mapNeighborsIncludeShadows()
 void mapCalcsDistanceCorrectly()
 {
 	Map map{10, 10};
-	map.occupy(100, false, 5, 0);
-	map.occupy(101, true, 0, 4);
-	int distance = map.distance(100, 101);
-	std::cout<<"distance: "<<distance<<std::endl;
-	assert(4 == distance);
+	map.occupy(100, false, 0, 5);
+	map.occupy(101, true, 4, 0);
+	assert(6 == map.distance(100, 101));
 }
 
 void characterSwordsmanCanAttackInRange()

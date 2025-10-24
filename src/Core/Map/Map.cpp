@@ -214,5 +214,6 @@ int Map::distance(uint32_t src_id, uint32_t dst_id) const
 {
 	auto src = lookupObject(src_id);
 	auto dst = lookupObject(dst_id);
-	return std::abs(src.x - dst.x + std::abs(src.y - dst.y)) / 2;
+	return floor(sqrt(pow(dst.x - src.x, 2) + pow(dst.y - src.y, 2)));
 }
+

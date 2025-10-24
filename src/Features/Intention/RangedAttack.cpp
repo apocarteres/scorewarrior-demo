@@ -10,7 +10,7 @@ bool RangedAttack::exec(uint32_t tick, map::Map* map, CreaturesContainer creatur
 		return false;
 	}
 
-	auto candidateIds = map->lookupNeighbors(creature->getId(), 1+range);
+	auto candidateIds = map->lookupNeighbors(creature->getId(), range);
 	for (auto& candidateId : candidateIds)
 	{
 		auto target = creatures[candidateId];
@@ -19,7 +19,7 @@ bool RangedAttack::exec(uint32_t tick, map::Map* map, CreaturesContainer creatur
 		{
 			++d;
 		}
-		if (d >= 1 && d <= 1+range)
+		if (d >= 1 && d <= range)
 		{
 			if (target->takeDamage(power))
 			{
