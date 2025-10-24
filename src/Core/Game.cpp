@@ -74,9 +74,9 @@ void Game::debug()
 	}
 }
 
-void Game::march(uint32_t id, int target_x, int target_y)
+void Game::march(uint32_t id, int targetX, int targetY)
 {
-	characters[id]->move(target_x, target_y);
+	characters[id]->move(targetX, targetY);
 }
 
 int Game::getHpOf(uint32_t id)

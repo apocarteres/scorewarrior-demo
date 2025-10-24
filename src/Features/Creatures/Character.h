@@ -8,10 +8,10 @@
 class Character
 {
 protected:
-	int movePoints;
+	uint32_t movePoints;
 	std::vector<IntentionPtr> intentions;
 
-	Character(uint32_t id, const std::string& name, uint32_t hp, bool rigid, int movePoints,
+	Character(uint32_t id, const std::string& name, uint32_t hp, bool rigid, uint32_t movePoints,
 		bool meleeAttackable, bool remoteAttackable) : movePoints(movePoints)
 	{
 		creature = std::make_shared<Creature>(id, hp, remoteAttackable, meleeAttackable, rigid, name);

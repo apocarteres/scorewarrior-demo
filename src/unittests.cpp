@@ -244,6 +244,7 @@ void characterMineGetsArmedAndAttacksUnitsInRange()
 
 void runUnitTests()
 {
+	std::cout<<"====== RUNNING UNIT TESTS =======" <<std::endl;
 	mapCellIsAvailableByDefault();
 	mapCellIsValidIfInRange();
 	mapCellIsInValidIfOutOfRangeByXPositive();
@@ -267,4 +268,5 @@ void runUnitTests()
 	characterHunterAttacksRavenInRangeWithRemoteAttack();
 	characterHunterCanNotAttackRavenInRangeDueToRavenPenalty();
 	characterMineGetsArmedAndAttacksUnitsInRange();
+	std::cout<<"====== FINISHED RUNNING UNIT TESTS =======" <<std::endl;
 }

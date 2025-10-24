@@ -7,7 +7,7 @@
 class Raven : public Character
 {
 public:
-	Raven(uint32_t id, uint32_t hp, int agility) :
+	Raven(uint32_t id, uint32_t hp, uint32_t agility) :
 			Character(id, "Raven", hp, false, 2, false, true)
 	{
 		intentions.push_back(std::make_unique<MeleeAttack>(agility, creature));

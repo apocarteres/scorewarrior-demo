@@ -23,7 +23,7 @@ public:
 
 	void debug();
 
-	void march(uint32_t id, int target_x, int target_y);
+	void march(uint32_t id, int targetX, int targetY);
 
 	int getHpOf(uint32_t id);
 };
