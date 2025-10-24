@@ -3,6 +3,7 @@
 #define CELL_H
 
 #include <set>
+#include <vector>
 
 namespace sw::demo::map
 {
