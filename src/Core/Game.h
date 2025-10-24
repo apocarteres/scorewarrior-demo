@@ -14,25 +14,27 @@ namespace sw::demo
 		std::unique_ptr<map::Map> map;
 		uint32_t tick = 0;
 
-	protected:
 		void removeDeadCreatures();
-		CharacterPtr findCharacter(uint32_t id);
+		
+		[[nodiscard]]
+		CharacterPtr findCharacter(uint32_t id) const;
 
 	public:
 		void createMap(uint32_t width, uint32_t height);
 
 		void spawn(Character&& character, int x, int y);
 
+		void march(uint32_t id, int targetX, int targetY);
+
 		bool turn();
 
 		[[nodiscard]]
 		uint32_t getTick() const;
 
-		void debug();
+		void debug() const;
 
-		void march(uint32_t id, int targetX, int targetY);
-
-		int getHpOf(uint32_t id);
+		[[nodiscard]]
+		int getHpOf(uint32_t id) const;
 	};
 }
 

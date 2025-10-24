@@ -189,11 +189,6 @@ void Map::print() const
 	}
 }
 
-bool Map::isValid(std::pair<int, int> xy) const
-{
-	return isValid(xy.first, xy.second);
-}
-
 bool Map::isValid(int x, int y) const
 {
 	if (x < 0 || y < 0 || x >= width || y >= height)

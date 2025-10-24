@@ -11,7 +11,7 @@ namespace sw::demo
 	{
 	public:
 		Swordsman(uint32_t id, uint32_t hp, uint32_t power) :
-				Character(id, "Swordsman", hp, true, 1, true, true)
+				Character(Creature{id, hp, true, true, true, "Swordsman"}, 1)
 		{
 			intentions.push_back(std::make_unique<MeleeAttack>(power, creature));
 		}

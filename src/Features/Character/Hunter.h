@@ -11,7 +11,7 @@ namespace sw::demo
 	{
 	public:
 		Hunter(uint32_t id, uint32_t hp, uint32_t strength, uint32_t range, uint32_t agility) :
-				Character(id, "Hunter", hp, true, 1, true, true)
+				Character(Creature{id, hp, true, true, true, "Hunter"}, 1)
 		{
 			intentions.push_back(std::make_unique<RangedAttack>(agility, range, creature));
 			intentions.push_back(std::make_unique<MeleeAttack>(strength, creature));

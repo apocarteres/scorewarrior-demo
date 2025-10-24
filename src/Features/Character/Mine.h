@@ -13,7 +13,7 @@ namespace sw::demo
 	{
 	public:
 		Mine(uint32_t id, uint32_t power) :
-				Character(id, "Mine", 1, false, 0, false, false)
+				Character(Creature{id, 1, false, false, false, "Mine"}, 0)
 		{
 			intentions.push_back(
 				std::make_unique<Explosion>(power, MINE_ACTIVATION_RANGE, MINE_DAMAGE_RANGE, creature));

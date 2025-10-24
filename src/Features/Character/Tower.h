@@ -12,7 +12,7 @@ namespace sw::demo
 	{
 	public:
 		Tower(uint32_t id, uint32_t hp, uint32_t power) :
-				Character(id, "Tower", hp, true, 0, true, true)
+				Character(Creature{id, hp, true, true, true, "Tower"}, 0)
 		{
 			intentions.push_back(std::make_unique<RangedAttack>(power, MAX_TOWER_RANGE, creature));
 		}

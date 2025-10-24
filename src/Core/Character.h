@@ -12,10 +12,9 @@ namespace sw::demo
 		uint32_t movePoints;
 		std::vector<IntentionPtr> intentions;
 
-		Character(uint32_t id, const std::string& name, uint32_t hp, bool rigid, uint32_t movePoints,
-			bool meleeAttackable, bool remoteAttackable) : movePoints(movePoints)
+		Character(Creature&& creature, uint32_t movePoints) : movePoints(movePoints)
 		{
-			creature = std::make_shared<Creature>(id, hp, remoteAttackable, meleeAttackable, rigid, name);
+			this->creature = std::make_shared<Creature>(std::move(creature));
 		}
 
 	public:
@@ -26,7 +25,7 @@ namespace sw::demo
 		[[nodiscard]]
 		uint32_t getId() const;
 
-		void move(int target_x, int target_y);
+		void move(int targetX, int targetY);
 	};
 
 	typedef std::shared_ptr<Character> CharacterPtr;

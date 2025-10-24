@@ -10,7 +10,7 @@ void Game::createMap(uint32_t width, uint32_t height)
 	std::cout << "New map " << width << "x" << height << " has been created" << std::endl;
 }
 
-CharacterPtr Game::findCharacter(uint32_t id)
+CharacterPtr Game::findCharacter(uint32_t id) const
 {
 	for (auto& character : characters)
 	{
@@ -80,7 +80,7 @@ uint32_t Game::getTick() const
 	return tick;
 }
 
-void Game::debug()
+void Game::debug() const
 {
 	map->print();
 	for (auto& character : characters)
@@ -99,7 +99,7 @@ void Game::march(uint32_t id, int targetX, int targetY)
 	charPtr->move(targetX, targetY);
 }
 
-int Game::getHpOf(uint32_t id)
+int Game::getHpOf(uint32_t id) const
 {
 	auto charPtr = findCharacter(id);
 	if (charPtr == nullptr)

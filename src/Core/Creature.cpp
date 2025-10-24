@@ -20,31 +20,27 @@ int Creature::getHp() const
 
 bool Creature::isRemoteAttackable() const
 {
-	return is_remote_attackable;
+	return remoteAttackable;
 }
 
 bool Creature::isMeleeAttackable() const
 {
-	return is_melee_attackable;
+	return meleeAttackable;
 }
 
 bool Creature::isRigid() const
 {
-	return is_rigid;
+	return rigid;
 }
 
 bool Creature::takeDamage(int damage)
 {
-	if (hp <= 0)
-	{
-		return false;
-	}
-	hp -= damage;
-	if (hp <= 0)
+	if (hp < 1 || hp < damage)
 	{
 		hp = 0;
 		return false;
 	}
+	hp -= damage;
 	return true;
 }
 

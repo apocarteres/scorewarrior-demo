@@ -8,30 +8,30 @@
 
 namespace sw::demo
 {
-	class Creature
+	class Creature final
 	{
 		uint32_t id;
-		int hp;
-		const int maxHp;
-		bool is_remote_attackable;
-		bool is_melee_attackable;
-		bool is_rigid;
+		uint32_t hp;
+		const uint32_t maxHp;
+		bool remoteAttackable;
+		bool meleeAttackable;
+		bool rigid;
 		std::string name;
 
 	public:
 		Creature(
 			uint32_t id,
-			int hp,
-			bool is_remote_attackable,
-			bool is_melee_attackable,
-			bool is_rigid,
+			uint32_t hp,
+			bool remoteAttackable,
+			bool meleeAttackable,
+			bool rigid,
 			const std::string& name) :
 				id(id),
 				hp(hp),
 				maxHp(hp),
-				is_remote_attackable(is_remote_attackable),
-				is_melee_attackable(is_melee_attackable),
-				is_rigid(is_rigid),
+				remoteAttackable(remoteAttackable),
+				meleeAttackable(meleeAttackable),
+				rigid(rigid),
 				name(name)
 		{
 			std::cout << "Creature created: " << name << "[" << id << "]" << std::endl;

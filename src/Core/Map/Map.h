@@ -48,9 +48,6 @@ namespace sw::demo::map
 		std::vector<uint32_t> lookupNeighbors(int x, int y, int level) const;
 
 		[[nodiscard]]
-		bool isValid(std::pair<int, int> xy) const;
-
-		[[nodiscard]]
 		bool isValid(int x, int y) const;
 
 		[[nodiscard]]
