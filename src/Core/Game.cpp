@@ -1,6 +1,8 @@
 
 #include "Game.h"
 
+using namespace sw::demo;
+
 void Game::createMap(uint32_t width, uint32_t height)
 {
 	map = std::make_unique<Map>(width, height);

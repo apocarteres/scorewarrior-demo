@@ -1,6 +1,8 @@
 
 #include "HpRestore.h"
 
+using namespace sw::demo;
+
 bool HpRestore::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	auto neighborIds = map->lookupNeighbors(creature->getId(), range);

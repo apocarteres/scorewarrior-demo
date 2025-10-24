@@ -3,20 +3,21 @@
 #define HPRESTORE_H
 #include "Intention.h"
 
-class HpRestore : public Intention
+namespace sw::demo
 {
-	int spirit;
-	int range;
+	class HpRestore : public Intention
+	{
+		int spirit;
+		int range;
 
-public:
-	HpRestore(int spirit, int range, const CreaturePtr& creature) :
-			Intention(creature),
-			spirit(spirit),
-			range(range)
-	{}
+	public:
+		HpRestore(int spirit, int range, const CreaturePtr& creature) :
+				Intention(creature),
+				spirit(spirit),
+				range(range)
+		{}
 
-	bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
-};
-
-
+		bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+	};
+}
 #endif //HPRESTORE_H

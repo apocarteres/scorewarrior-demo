@@ -1,6 +1,8 @@
 
 #include "Explosion.h"
 
+using namespace sw::demo;
+
 bool Explosion::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	if (armed)

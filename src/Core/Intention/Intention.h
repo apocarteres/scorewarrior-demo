@@ -9,21 +9,23 @@
 #include <ostream>
 #include <utility>
 
-class Intention
+namespace sw::demo
 {
-protected:
-	CreaturePtr creature;
+	class Intention
+	{
+	protected:
+		CreaturePtr creature;
 
-public:
-	explicit Intention(CreaturePtr creature) :
-			creature(std::move(creature))
-	{}
+	public:
+		explicit Intention(CreaturePtr creature) :
+				creature(std::move(creature))
+		{}
 
-	virtual ~Intention() = default;
+		virtual ~Intention() = default;
 
-	virtual bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
-};
+		virtual bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
+	};
 
-typedef std::unique_ptr<Intention> IntentionPtr;
-
+	typedef std::unique_ptr<Intention> IntentionPtr;
+}
 #endif	//INTENTION_H

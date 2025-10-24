@@ -1,6 +1,8 @@
 
 #include "MeleeAttack.h"
 
+using namespace sw::demo;
+
 bool MeleeAttack::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	auto neighborIds = map->lookupNeighbors(creature->getId(), 1);

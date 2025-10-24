@@ -3,21 +3,22 @@
 #define RANGEDATTACK_H
 #include "Intention.h"
 
-class RangedAttack : public Intention
+namespace sw::demo
 {
-	int power;
-	int range;
+	class RangedAttack final : public Intention
+	{
+		int power;
+		int range;
 
-public:
-	RangedAttack(int power, int range, const CreaturePtr& creature) :
-			Intention(creature),
-			power(power),
-			range(range)
-	{}
+	public:
+		RangedAttack(int power, int range, const CreaturePtr& creature) :
+				Intention(creature),
+				power(power),
+				range(range)
+		{}
 
-	bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
-};
-
-
+		bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+	};
+}
 
 #endif	//RANGEDATTACK_H

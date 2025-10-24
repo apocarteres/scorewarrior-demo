@@ -6,138 +6,142 @@
 #include <set>
 #include <vector>
 
-struct Object
+namespace sw::demo
 {
-	int x;
-	int y;
-	bool rigid;
-};
-
-class Cell
-{
-	std::set<uint32_t> bodies;
-	std::set<uint32_t> shadows;
-public:
-	Cell() = default;
-	Cell(const Cell& cell) = delete;
-	Cell& operator=(const Cell& cell) = delete;
-
-	void addBody(uint32_t body)
+	struct Object
 	{
-		bodies.insert(body);
-	}
+		int x;
+		int y;
+		bool rigid;
+	};
 
-	void addShadow(uint32_t shadow)
+	class Cell
 	{
-		shadows.insert(shadow);
-	}
+		std::set<uint32_t> bodies;
+		std::set<uint32_t> shadows;
 
-	bool hasBodies()
-	{
-		return !bodies.empty();
-	}
+	public:
+		Cell() = default;
+		Cell(const Cell& cell) = delete;
+		Cell& operator=(const Cell& cell) = delete;
 
-	bool containsBody(uint32_t id)
-	{
-		return bodies.find(id) != bodies.end();
-	}
-
-	bool containsShadow(uint32_t id)
-	{
-		return shadows.find(id) != shadows.end();
-	}
-
-	void dropBody(uint32_t id)
-	{
-		bodies.erase(id);
-	}
-
-	void dropShadow(uint32_t id)
-	{
-		shadows.erase(id);
-	}
-
-	std::vector<uint32_t> getShadows()
-	{
-		std::vector<uint32_t> occupants;
-		for (auto& id : shadows)
+		void addBody(uint32_t body)
 		{
-			occupants.push_back(id);
+			bodies.insert(body);
 		}
-		return occupants;
-	}
 
-	std::vector<uint32_t> getBodies()
-	{
-		std::vector<uint32_t> occupants;
-		for (auto& id : bodies)
+		void addShadow(uint32_t shadow)
 		{
-			occupants.push_back(id);
+			shadows.insert(shadow);
 		}
-		return occupants;
-	}
 
-	std::vector<uint32_t> getAll()
-	{
-		std::vector<uint32_t> occupants;
-		for (auto& id : shadows)
+		bool hasBodies()
 		{
-			occupants.push_back(id);
+			return !bodies.empty();
 		}
-		for (auto& id : bodies)
+
+		bool containsBody(uint32_t id)
 		{
-			occupants.push_back(id);
+			return bodies.find(id) != bodies.end();
 		}
-		return occupants;
-	}
-};
 
-class Map final
-{
-	std::unique_ptr<std::unique_ptr<Cell>[]> field;
+		bool containsShadow(uint32_t id)
+		{
+			return shadows.find(id) != shadows.end();
+		}
 
-	int width;
-	int height;
+		void dropBody(uint32_t id)
+		{
+			bodies.erase(id);
+		}
 
-public:
-	Map(int width, int height) :
-			width(width),
-			height(height)
+		void dropShadow(uint32_t id)
+		{
+			shadows.erase(id);
+		}
+
+		std::vector<uint32_t> getShadows()
+		{
+			std::vector<uint32_t> occupants;
+			for (auto& id : shadows)
+			{
+				occupants.push_back(id);
+			}
+			return occupants;
+		}
+
+		std::vector<uint32_t> getBodies()
+		{
+			std::vector<uint32_t> occupants;
+			for (auto& id : bodies)
+			{
+				occupants.push_back(id);
+			}
+			return occupants;
+		}
+
+		std::vector<uint32_t> getAll()
+		{
+			std::vector<uint32_t> occupants;
+			for (auto& id : shadows)
+			{
+				occupants.push_back(id);
+			}
+			for (auto& id : bodies)
+			{
+				occupants.push_back(id);
+			}
+			return occupants;
+		}
+	};
+
+	class Map final
 	{
-		field = std::make_unique<std::unique_ptr<Cell>[]>(width * height);
-		cleanup();
-	}
+		std::unique_ptr<std::unique_ptr<Cell>[]> field;
 
-	void cleanup();
+		int width;
+		int height;
 
-	bool occupy(uint32_t id, bool rigid, int x, int y);
+	public:
+		Map(int width, int height) :
+				width(width),
+				height(height)
+		{
+			field = std::make_unique<std::unique_ptr<Cell>[]>(width * height);
+			cleanup();
+		}
 
-	bool move(uint32_t id, int dst_x, int dst_y, int step);
+		void cleanup();
 
-	void release(uint32_t id);
+		bool occupy(uint32_t id, bool rigid, int x, int y);
 
-	void print() const;
+		bool move(uint32_t id, int dst_x, int dst_y, int step);
 
-	[[nodiscard]]
-	bool isAvailable(int x, int y) const;
+		void release(uint32_t id);
 
-	[[nodiscard]]
-	Object lookupObject(uint32_t id) const;
+		void print() const;
 
-	[[nodiscard]]
-	std::vector<uint32_t> lookupNeighbors(uint32_t id, int level) const;
+		[[nodiscard]]
+		bool isAvailable(int x, int y) const;
 
-	[[nodiscard]]
-	std::vector<uint32_t> lookupNeighbors(int x, int y, int level) const;
+		[[nodiscard]]
+		Object lookupObject(uint32_t id) const;
 
-	[[nodiscard]]
-	bool isValid(std::pair<int, int> xy) const;
+		[[nodiscard]]
+		std::vector<uint32_t> lookupNeighbors(uint32_t id, int level) const;
 
-	[[nodiscard]]
-	bool isValid(int x, int y) const;
+		[[nodiscard]]
+		std::vector<uint32_t> lookupNeighbors(int x, int y, int level) const;
 
-	[[nodiscard]]
-	int distance(uint32_t src_id, uint32_t dst_id) const;
-};
+		[[nodiscard]]
+		bool isValid(std::pair<int, int> xy) const;
+
+		[[nodiscard]]
+		bool isValid(int x, int y) const;
+
+		[[nodiscard]]
+		int distance(uint32_t src_id, uint32_t dst_id) const;
+	};
+}
 
 #endif	//MAP_H

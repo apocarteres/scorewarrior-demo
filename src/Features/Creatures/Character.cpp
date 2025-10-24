@@ -1,6 +1,8 @@
 
 #include "Character.h"
 
+using namespace sw::demo;
+
 bool Character::turn(Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures)
 {
 	for (auto& intention : intentions)

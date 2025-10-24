@@ -1,6 +1,8 @@
 
 #include "ChangePosition.h"
 
+using namespace sw::demo;
+
 bool ChangePosition::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	if (targetX == -1 && targetY == -1)

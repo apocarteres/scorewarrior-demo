@@ -4,16 +4,17 @@
 #include "Character.h"
 #include "Core/Intention/MeleeAttack.h"
 
-class Raven : public Character
+namespace sw::demo
 {
-public:
-	Raven(uint32_t id, uint32_t hp, uint32_t agility) :
-			Character(id, "Raven", hp, false, 2, false, true)
+	class Raven : public Character
 	{
-		intentions.push_back(std::make_unique<MeleeAttack>(agility, creature));
-	}
-};
+	public:
+		Raven(uint32_t id, uint32_t hp, uint32_t agility) :
+				Character(id, "Raven", hp, false, 2, false, true)
+		{
+			intentions.push_back(std::make_unique<MeleeAttack>(agility, creature));
+		}
+	};
+}
 
-
-
-#endif //RAVEN_H
+#endif	//RAVEN_H

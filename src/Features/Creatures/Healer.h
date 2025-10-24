@@ -4,15 +4,17 @@
 #include "Character.h"
 #include "Core/Intention/HpRestore.h"
 
-class Healer: public Character
+namespace sw::demo
 {
-public:
-	Healer(uint32_t id, uint32_t hp, uint32_t spirit) :
-			Character(id, "Healer", hp, true, 1, true, true)
+	class Healer : public Character
 	{
-		intentions.push_back(std::make_unique<HpRestore>(spirit, 2, creature));
-	}
-};
+	public:
+		Healer(uint32_t id, uint32_t hp, uint32_t spirit) :
+				Character(id, "Healer", hp, true, 1, true, true)
+		{
+			intentions.push_back(std::make_unique<HpRestore>(spirit, 2, creature));
+		}
+	};
+}
 
-
-#endif //HEALER_H
+#endif	//HEALER_H

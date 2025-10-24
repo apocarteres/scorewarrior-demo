@@ -42,6 +42,8 @@ int main(int argc, char** argv)
 		throw std::runtime_error("Error: File not found - " + std::string(argv[1]));
 	}
 
+	using namespace demo;
+
 	Game game;
 	io::CommandParser parser;
 	parser

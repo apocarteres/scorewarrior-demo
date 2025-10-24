@@ -1,6 +1,8 @@
 
 #include "RangedAttack.h"
 
+using namespace sw::demo;
+
 bool RangedAttack::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	if (const auto neighbors = map->lookupNeighbors(creature->getId(), 1); !neighbors.empty())

@@ -7,14 +7,18 @@
 #define MINE_ACTIVATION_RANGE (2)
 #define MINE_DAMAGE_RANGE (3)
 
-class Mine : public Character
+namespace sw::demo
 {
-public:
-	Mine(uint32_t id, uint32_t power) :
-			Character(id, "Mine", 1, false, 0, false, false)
+	class Mine : public Character
 	{
-		intentions.push_back(std::make_unique<Explosion>(power, MINE_ACTIVATION_RANGE, MINE_DAMAGE_RANGE, creature));
-	}
-};
+	public:
+		Mine(uint32_t id, uint32_t power) :
+				Character(id, "Mine", 1, false, 0, false, false)
+		{
+			intentions.push_back(
+				std::make_unique<Explosion>(power, MINE_ACTIVATION_RANGE, MINE_DAMAGE_RANGE, creature));
+		}
+	};
+}
 
 #endif	//MINE_H

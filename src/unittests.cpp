@@ -7,6 +7,8 @@
 
 #include <cassert>
 
+using namespace sw::demo;
+
 void mapCellIsAvailableByDefault()
 {
 	Map map{1, 1};

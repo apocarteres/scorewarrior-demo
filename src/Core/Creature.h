@@ -5,57 +5,61 @@
 #include <iostream>
 #include <ostream>
 
-class Creature
+namespace sw::demo
 {
-	uint32_t id;
-	int hp;
-	const int maxHp;
-	bool is_remote_attackable;
-	bool is_melee_attackable;
-	bool is_rigid;
-	std::string name;
-
-public:
-	Creature(
-		uint32_t id,
-		int hp,
-		bool is_remote_attackable,
-		bool is_melee_attackable,
-		bool is_rigid,
-		const std::string& name) :
-			id(id),
-			hp(hp), maxHp(hp),
-			is_remote_attackable(is_remote_attackable),
-			is_melee_attackable(is_melee_attackable),
-			is_rigid(is_rigid),
-			name(name)
+	class Creature
 	{
-		std::cout << "Creature created: " << name << "[" << id << "]"<< std::endl;
-	}
+		uint32_t id;
+		int hp;
+		const int maxHp;
+		bool is_remote_attackable;
+		bool is_melee_attackable;
+		bool is_rigid;
+		std::string name;
 
-	bool takeDamage(int damage);
+	public:
+		Creature(
+			uint32_t id,
+			int hp,
+			bool is_remote_attackable,
+			bool is_melee_attackable,
+			bool is_rigid,
+			const std::string& name) :
+				id(id),
+				hp(hp),
+				maxHp(hp),
+				is_remote_attackable(is_remote_attackable),
+				is_melee_attackable(is_melee_attackable),
+				is_rigid(is_rigid),
+				name(name)
+		{
+			std::cout << "Creature created: " << name << "[" << id << "]" << std::endl;
+		}
 
-	bool restoreHp(int spirit);
+		bool takeDamage(int damage);
 
-	[[nodiscard]]
-	std::string getName() const;
+		bool restoreHp(int spirit);
 
-	[[nodiscard]]
-	uint32_t getId() const;
+		[[nodiscard]]
+		std::string getName() const;
 
-	[[nodiscard]]
-	int getHp() const;
+		[[nodiscard]]
+		uint32_t getId() const;
 
-	[[nodiscard]]
-	bool isRemoteAttackable() const;
+		[[nodiscard]]
+		int getHp() const;
 
-	[[nodiscard]]
-	bool isMeleeAttackable() const;
+		[[nodiscard]]
+		bool isRemoteAttackable() const;
 
-	[[nodiscard]]
-	bool isRigid() const;
-};
+		[[nodiscard]]
+		bool isMeleeAttackable() const;
 
-typedef std::shared_ptr<Creature> CreaturePtr;
+		[[nodiscard]]
+		bool isRigid() const;
+	};
+
+	typedef std::shared_ptr<Creature> CreaturePtr;
+}
 
 #endif	//CREATURE_H

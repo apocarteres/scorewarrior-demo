@@ -5,29 +5,32 @@
 #include "Core/Intention/ChangePosition.h"
 #include "Core/Intention/Intention.h"
 
-class Character
+namespace sw::demo
 {
-protected:
-	uint32_t movePoints;
-	std::vector<IntentionPtr> intentions;
-
-	Character(uint32_t id, const std::string& name, uint32_t hp, bool rigid, uint32_t movePoints,
-		bool meleeAttackable, bool remoteAttackable) : movePoints(movePoints)
+	class Character
 	{
-		creature = std::make_shared<Creature>(id, hp, remoteAttackable, meleeAttackable, rigid, name);
-	}
+	protected:
+		uint32_t movePoints;
+		std::vector<IntentionPtr> intentions;
 
-public:
-	CreaturePtr creature;
+		Character(uint32_t id, const std::string& name, uint32_t hp, bool rigid, uint32_t movePoints,
+			bool meleeAttackable, bool remoteAttackable) : movePoints(movePoints)
+		{
+			creature = std::make_shared<Creature>(id, hp, remoteAttackable, meleeAttackable, rigid, name);
+		}
 
-	bool turn(Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures);
+	public:
+		CreaturePtr creature;
 
-	[[nodiscard]]
-	uint32_t getId() const;
+		bool turn(Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures);
 
-	void move(int target_x, int target_y);
-};
+		[[nodiscard]]
+		uint32_t getId() const;
 
-typedef std::unique_ptr<Character> CharacterPtr;
+		void move(int target_x, int target_y);
+	};
+
+	typedef std::unique_ptr<Character> CharacterPtr;
+}
 
 #endif	//CHARACTER_H

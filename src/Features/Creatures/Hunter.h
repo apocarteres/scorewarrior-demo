@@ -5,15 +5,18 @@
 #include "Core/Intention/MeleeAttack.h"
 #include "Core/Intention/RangedAttack.h"
 
-class Hunter : public Character
+namespace sw::demo
 {
-public:
-	Hunter(uint32_t id, uint32_t hp, uint32_t strength, uint32_t range, uint32_t agility) :
-			Character(id, "Hunter", hp, true, 1, true, true)
+	class Hunter : public Character
 	{
-		intentions.push_back(std::make_unique<RangedAttack>(agility, range, creature));
-		intentions.push_back(std::make_unique<MeleeAttack>(strength, creature));
-	}
-};
+	public:
+		Hunter(uint32_t id, uint32_t hp, uint32_t strength, uint32_t range, uint32_t agility) :
+				Character(id, "Hunter", hp, true, 1, true, true)
+		{
+			intentions.push_back(std::make_unique<RangedAttack>(agility, range, creature));
+			intentions.push_back(std::make_unique<MeleeAttack>(strength, creature));
+		}
+	};
+}
 
 #endif	//HUNTER_H

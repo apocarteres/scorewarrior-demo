@@ -5,14 +5,17 @@
 #include "Core/Creature.h"
 #include "Core/Intention/MeleeAttack.h"
 
-class Swordsman : public Character
+namespace sw::demo
 {
-public:
-	Swordsman(uint32_t id, uint32_t hp, uint32_t power) :
-			Character(id, "Swordsman", hp, true, 1, true, true)
+	class Swordsman : public Character
 	{
-		intentions.push_back(std::make_unique<MeleeAttack>(power, creature));
-	}
-};
+	public:
+		Swordsman(uint32_t id, uint32_t hp, uint32_t power) :
+				Character(id, "Swordsman", hp, true, 1, true, true)
+		{
+			intentions.push_back(std::make_unique<MeleeAttack>(power, creature));
+		}
+	};
+}
 
 #endif	//SWORDSMAN_H

@@ -1,6 +1,8 @@
 
 #include "Map.h"
 
+using namespace sw::demo;
+
 void Map::cleanup()
 {
 	for (uint32_t i = 0; i < width * height; ++i)

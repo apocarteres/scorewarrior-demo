@@ -1,6 +1,8 @@
 
 #include "Creature.h"
 
+using namespace sw::demo;
+
 std::string Creature::getName() const
 {
 	return name;
