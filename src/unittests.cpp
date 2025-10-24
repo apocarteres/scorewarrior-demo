@@ -1,6 +1,7 @@
 #include "Core/Game.h"
 #include "Core/Map.h"
 #include "Features/Creatures/Hunter.h"
+#include "Features/Creatures/Mine.h"
 #include "Features/Creatures/Raven.h"
 #include "Features/Creatures/Swordsman.h"
 
@@ -219,10 +220,26 @@ void characterHunterCanNotAttackRavenInRangeDueToRavenPenalty()
 	game.createMap(10, 10);
 	game.spawn(Hunter{1, 10, 5, 3, 10}, 5, 5);
 	game.spawn(Raven{2, 7, 1}, 2, 2);
-	// game.spawn(Swordsman{2, 7, 1}, 2, 2);
 	assert(7 == game.getHpOf(2));
 	game.turn();
 	assert(7 == game.getHpOf(2));
+}
+
+void characterMineGetsArmedAndAttacksUnitsInRange()
+{
+	Game game;
+	game.createMap(10, 10);
+	game.spawn(Mine{1, 10}, 5, 5);
+	game.spawn(Swordsman{2, 7, 1}, 3, 3);
+	game.spawn(Swordsman{3, 7, 1}, 8, 8);
+	assert(7 == game.getHpOf(2));
+	assert(7 == game.getHpOf(3));
+	game.turn();
+	assert(7 == game.getHpOf(2));
+	assert(7 == game.getHpOf(3));
+	game.turn();
+	assert(0 == game.getHpOf(2));
+	assert(0 == game.getHpOf(3));
 }
 
 void runUnitTests()
@@ -249,4 +266,5 @@ void runUnitTests()
 	characterHunterAttacksSwordsmanInRangeWithRemoteAttack();
 	characterHunterAttacksRavenInRangeWithRemoteAttack();
 	characterHunterCanNotAttackRavenInRangeDueToRavenPenalty();
+	characterMineGetsArmedAndAttacksUnitsInRange();
 }
