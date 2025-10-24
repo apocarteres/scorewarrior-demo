@@ -1,9 +1,9 @@
 
 #ifndef SWORDSMAN_H
 #define SWORDSMAN_H
-#include "Character.h"
+#include "../../Core/Character.h"
+#include "../Intention/MeleeAttack.h"
 #include "Core/Creature.h"
-#include "Core/Intention/MeleeAttack.h"
 
 namespace sw::demo
 {

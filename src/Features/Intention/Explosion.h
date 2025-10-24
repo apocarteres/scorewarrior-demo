@@ -1,9 +1,9 @@
 
 #ifndef EXPLOSION_H
 #define EXPLOSION_H
+#include "../../Core/Intention/Intention.h"
 #include "Core/Creature.h"
 #include "Core/Map.h"
-#include "Intention.h"
 
 namespace sw::demo
 {

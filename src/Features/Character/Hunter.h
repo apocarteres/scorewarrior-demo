@@ -1,9 +1,9 @@
 
 #ifndef HUNTER_H
 #define HUNTER_H
-#include "Character.h"
-#include "Core/Intention/MeleeAttack.h"
-#include "Core/Intention/RangedAttack.h"
+#include "../../Core/Character.h"
+#include "../Intention/MeleeAttack.h"
+#include "../Intention/RangedAttack.h"
 
 namespace sw::demo
 {

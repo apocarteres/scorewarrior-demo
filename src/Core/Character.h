@@ -2,7 +2,6 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "Core/Intention/ChangePosition.h"
 #include "Core/Intention/Intention.h"
 
 namespace sw::demo

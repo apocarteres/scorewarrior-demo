@@ -1,7 +1,7 @@
 
 #ifndef RANGEDATTACK_H
 #define RANGEDATTACK_H
-#include "Intention.h"
+#include "../../Core/Intention/Intention.h"
 
 namespace sw::demo
 {

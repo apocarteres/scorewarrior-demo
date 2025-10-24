@@ -1,9 +1,9 @@
 #include "Core/Creature.h"
 #include "Core/Game.h"
-#include "Features/Creatures/Healer.h"
-#include "Features/Creatures/Hunter.h"
-#include "Features/Creatures/Swordsman.h"
-#include "Features/Creatures/Tower.h"
+#include "Features/Character/Healer.h"
+#include "Features/Character/Hunter.h"
+#include "Features/Character/Swordsman.h"
+#include "Features/Character/Tower.h"
 #include "IO/System/TypeRegistry.hpp"
 
 #include <IO/Commands/CreateMap.hpp>

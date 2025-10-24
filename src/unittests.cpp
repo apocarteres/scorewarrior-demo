@@ -1,9 +1,9 @@
 #include "Core/Game.h"
 #include "Core/Map.h"
-#include "Features/Creatures/Hunter.h"
-#include "Features/Creatures/Mine.h"
-#include "Features/Creatures/Raven.h"
-#include "Features/Creatures/Swordsman.h"
+#include "Features/Character/Hunter.h"
+#include "Features/Character/Mine.h"
+#include "Features/Character/Raven.h"
+#include "Features/Character/Swordsman.h"
 
 #include <cassert>
 
