@@ -1,13 +1,14 @@
-#include <cmath>
-#include "Map.h"
+#include "Core/Map/Map.h"
 
-using namespace sw::demo;
+#include <cmath>
+
+using namespace sw::demo::map;
 
 void Map::cleanup()
 {
 	for (uint32_t i = 0; i < width * height; ++i)
 	{
-		field[i] = std::make_unique<Cell>();
+		field[i].clear();
 	}
 }
 
@@ -17,7 +18,7 @@ bool Map::occupy(uint32_t id, bool rigid, int x, int y)
 	{
 		return false;
 	}
-	Cell& cell = *field[y * width + x];
+	Cell& cell = field[y * width + x];
 	if (rigid)
 	{
 		if (isAvailable(x, y))
@@ -42,7 +43,7 @@ bool Map::isAvailable(int x, int y) const
 	{
 		return false;
 	}
-	return !field[y * width + x]->hasBodies();
+	return !field[y * width + x].hasBodies();
 }
 
 bool Map::move(uint32_t id, int dst_x, int dst_y, int step)
@@ -103,7 +104,7 @@ Object Map::lookupObject(uint32_t id) const
 	{
 		auto y = i / width;
 		auto x = i - y * width;
-		Cell& cell = *field[y * width + x];
+		Cell& cell = field[y * width + x];
 		if (cell.containsShadow(id))
 		{
 			return {x, y, false};
@@ -143,7 +144,7 @@ std::vector<uint32_t> Map::lookupNeighbors(int x, int y, int level) const
 			{
 				continue;
 			}
-			Cell& cell = *field[ly * width + lx];
+			Cell& cell = field[ly * width + lx];
 			for (auto& id : cell.getAll())
 			{
 				occupants.push_back(id);
@@ -158,7 +159,7 @@ void Map::print() const
 	int j = 0;
 	for (int i = 0; i < width * height; ++i)
 	{
-		Cell& cell = *field[i];
+		Cell& cell = field[i];
 		auto totalOccupants = cell.getAll();
 		if (totalOccupants.size() > 1)
 		{
@@ -209,7 +210,7 @@ void Map::release(uint32_t id)
 	{
 		return;
 	}
-	Cell& cell = *field[object.y * width + object.x];
+	Cell& cell = field[object.y * width + object.x];
 	cell.dropBody(id);
 	cell.dropShadow(id);
 }

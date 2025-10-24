@@ -5,7 +5,7 @@
 
 namespace sw::demo
 {
-	class HpRestore : public Intention
+	class HpRestore final : public Intention
 	{
 		int spirit;
 		int range;
@@ -17,7 +17,7 @@ namespace sw::demo
 				range(range)
 		{}
 
-		bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+		bool exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
 	};
 }
 #endif //HPRESTORE_H

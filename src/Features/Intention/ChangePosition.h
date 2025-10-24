@@ -5,7 +5,7 @@
 
 namespace sw::demo
 {
-	class ChangePosition : public Intention
+	class ChangePosition final : public Intention
 	{
 		int targetX;
 		int targetY;
@@ -19,7 +19,7 @@ namespace sw::demo
 				movePoints(movePoints)
 		{}
 
-		bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+		bool exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
 	};
 }
 

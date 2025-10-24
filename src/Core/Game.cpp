@@ -5,7 +5,7 @@ using namespace sw::demo;
 
 void Game::createMap(uint32_t width, uint32_t height)
 {
-	map = std::make_unique<Map>(width, height);
+	map = std::make_unique<map::Map>(width, height);
 	std::cout << "New map " << width << "x" << height << " has been created" << std::endl;
 }
 
@@ -83,5 +83,5 @@ void Game::march(uint32_t id, int targetX, int targetY)
 
 int Game::getHpOf(uint32_t id)
 {
-	return characters[id]->creature->getHp();
+	return characters.at(id)->creature->getHp();
 }

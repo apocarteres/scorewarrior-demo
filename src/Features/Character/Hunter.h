@@ -7,7 +7,7 @@
 
 namespace sw::demo
 {
-	class Hunter : public Character
+	class Hunter final : public Character
 	{
 	public:
 		Hunter(uint32_t id, uint32_t hp, uint32_t strength, uint32_t range, uint32_t agility) :

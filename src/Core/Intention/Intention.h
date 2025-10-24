@@ -2,12 +2,12 @@
 #ifndef INTENTION_H
 #define INTENTION_H
 
+#include "../Map/Map.h"
 #include "Core/Creature.h"
-#include "Core/Map.h"
 
 #include <ostream>
-#include <utility>
 #include <unordered_map>
+#include <utility>
 
 namespace sw::demo
 {
@@ -23,7 +23,7 @@ namespace sw::demo
 
 		virtual ~Intention() = default;
 
-		virtual bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
+		virtual bool exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
 	};
 
 	typedef std::unique_ptr<Intention> IntentionPtr;

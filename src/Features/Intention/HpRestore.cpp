@@ -3,7 +3,7 @@
 
 using namespace sw::demo;
 
-bool HpRestore::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool HpRestore::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	auto neighborIds = map->lookupNeighbors(creature->getId(), range);
 	if (neighborIds.empty())

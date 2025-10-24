@@ -1,5 +1,5 @@
 #include "Core/Game.h"
-#include "Core/Map.h"
+#include "Core/Map/Map.h"
 #include "Features/Character/Hunter.h"
 #include "Features/Character/Mine.h"
 #include "Features/Character/Raven.h"
@@ -8,6 +8,8 @@
 #include <cassert>
 
 using namespace sw::demo;
+
+using map::Map;
 
 void mapCellIsAvailableByDefault()
 {

@@ -2,8 +2,8 @@
 #ifndef EXPLOSION_H
 #define EXPLOSION_H
 #include "../../Core/Intention/Intention.h"
+#include "../../Core/Map/Map.h"
 #include "Core/Creature.h"
-#include "Core/Map.h"
 
 namespace sw::demo
 {
@@ -23,7 +23,7 @@ namespace sw::demo
 				armed(false)
 		{}
 
-		bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+		bool exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
 	};
 }
 #endif	//EXPLOSION_H

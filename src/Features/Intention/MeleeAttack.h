@@ -15,7 +15,7 @@ namespace sw::demo
 				power(power)
 		{}
 
-		bool exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+		bool exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
 	};
 }
 

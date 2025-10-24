@@ -6,7 +6,7 @@
 
 namespace sw::demo
 {
-	class Raven : public Character
+	class Raven final : public Character
 	{
 	public:
 		Raven(uint32_t id, uint32_t hp, uint32_t agility) :

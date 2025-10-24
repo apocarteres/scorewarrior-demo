@@ -7,7 +7,7 @@
 
 namespace sw::demo
 {
-	class Swordsman : public Character
+	class Swordsman final : public Character
 	{
 	public:
 		Swordsman(uint32_t id, uint32_t hp, uint32_t power) :

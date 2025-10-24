@@ -21,7 +21,7 @@ namespace sw::demo
 	public:
 		CreaturePtr creature;
 
-		bool turn(Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures);
+		bool turn(map::Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures);
 
 		[[nodiscard]]
 		uint32_t getId() const;

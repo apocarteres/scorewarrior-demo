@@ -9,7 +9,7 @@
 
 namespace sw::demo
 {
-	class Mine : public Character
+	class Mine final : public Character
 	{
 	public:
 		Mine(uint32_t id, uint32_t power) :

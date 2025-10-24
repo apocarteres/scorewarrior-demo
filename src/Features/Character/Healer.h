@@ -6,7 +6,7 @@
 
 namespace sw::demo
 {
-	class Healer : public Character
+	class Healer final : public Character
 	{
 	public:
 		Healer(uint32_t id, uint32_t hp, uint32_t spirit) :
