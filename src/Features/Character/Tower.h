@@ -1,8 +1,8 @@
 
 #ifndef TOWER_H
 #define TOWER_H
-#include "../../Core/Character.h"
-#include "../Intention/RangedAttack.h"
+#include <Core/Character.h>
+#include <Features/Intention/RangedAttack.h>
 
 #define MAX_TOWER_RANGE (5)
 

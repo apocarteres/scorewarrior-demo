@@ -1,8 +1,8 @@
 
 #ifndef RAVEN_H
 #define RAVEN_H
-#include "../../Core/Character.h"
-#include "../Intention/MeleeAttack.h"
+#include <Core/Character.h>
+#include <Features/Intention/MeleeAttack.h>
 
 namespace sw::demo
 {

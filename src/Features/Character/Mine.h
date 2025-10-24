@@ -1,8 +1,8 @@
 
 #ifndef MINE_H
 #define MINE_H
-#include "../../Core/Character.h"
-#include "../Intention/Explosion.h"
+#include <Core/Character.h>
+#include <Features/Intention/Explosion.h>
 
 #define MINE_ACTIVATION_RANGE (2)
 #define MINE_DAMAGE_RANGE (3)

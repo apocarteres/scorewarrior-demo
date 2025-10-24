@@ -1,8 +1,8 @@
 
 #ifndef HEALER_H
 #define HEALER_H
-#include "../../Core/Character.h"
-#include "../Intention/HpRestore.h"
+#include <Core/Character.h>
+#include <Features/Intention/HpRestore.h>
 
 namespace sw::demo
 {
