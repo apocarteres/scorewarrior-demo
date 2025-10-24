@@ -2,37 +2,37 @@
 
 #include <cassert>
 
-void malCellIsAvailableByDefault()
+void mapCellIsAvailableByDefault()
 {
 	Map map{1, 1};
 	assert(true == map.isAvailable(0, 0));
 }
 
-void malCellIsValidIfInRange()
+void mapCellIsValidIfInRange()
 {
 	Map map{1, 1};
 	assert(true == map.isValid(0, 0));
 }
 
-void malCellIsInValidIfOutOfRangeByXPositive()
+void mapCellIsInValidIfOutOfRangeByXPositive()
 {
 	Map map{1, 1};
 	assert(false == map.isValid(2, 0));
 }
 
-void malCellIsInValidIfOutOfRangeByYPositive()
+void mapCellIsInValidIfOutOfRangeByYPositive()
 {
 	Map map{1, 1};
 	assert(false == map.isValid(0, 2));
 }
 
-void malCellIsInValidIfOutOfRangeByXNegative()
+void mapCellIsInValidIfOutOfRangeByXNegative()
 {
 	Map map{1, 1};
 	assert(false == map.isValid(-1, 0));
 }
 
-void malCellIsInValidIfOutOfRangeByYNegative()
+void mapCellIsInValidIfOutOfRangeByYNegative()
 {
 	Map map{1, 1};
 	assert(false == map.isValid(-1, 0));
@@ -155,12 +155,12 @@ void mapCalcsDistanceCorrectly()
 
 void runUnitTests()
 {
-	malCellIsAvailableByDefault();
-	malCellIsValidIfInRange();
-	malCellIsInValidIfOutOfRangeByXPositive();
-	malCellIsInValidIfOutOfRangeByYPositive();
-	malCellIsInValidIfOutOfRangeByXNegative();
-	malCellIsInValidIfOutOfRangeByYNegative();
+	mapCellIsAvailableByDefault();
+	mapCellIsValidIfInRange();
+	mapCellIsInValidIfOutOfRangeByXPositive();
+	mapCellIsInValidIfOutOfRangeByYPositive();
+	mapCellIsInValidIfOutOfRangeByXNegative();
+	mapCellIsInValidIfOutOfRangeByYNegative();
 	mapCellOccupiedWithRigidBody();
 	mapCellNotOccupiedWithRigidBodyTwice();
 	mapCellNotOccupiedByShadow();
