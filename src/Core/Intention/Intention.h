@@ -9,7 +9,6 @@
 #include "IO/System/EventLog.hpp"
 
 #include <ostream>
-#include <unordered_map>
 #include <utility>
 
 namespace sw::demo

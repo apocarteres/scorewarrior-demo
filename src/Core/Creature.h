@@ -5,6 +5,7 @@
 #include <memory>
 #include <ostream>
 #include <utility>
+#include <unordered_map>
 
 namespace sw::demo
 {
