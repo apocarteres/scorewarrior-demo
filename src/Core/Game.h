@@ -1,6 +1,8 @@
 
 #ifndef GAME_H
 #define GAME_H
+
+#include <unordered_map>
 #include "Features/Creatures/Character.h"
 
 namespace sw::demo

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <ostream>
+#include <memory>
 
 namespace sw::demo
 {
