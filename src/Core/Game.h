@@ -3,6 +3,7 @@
 #define GAME_H
 
 #include "Character.h"
+#include "IO/System/EventLog.hpp"
 
 #include <vector>
 
@@ -10,9 +11,10 @@ namespace sw::demo
 {
 	class Game
 	{
+		EventLog eventLog;
 		std::vector<CharacterPtr> characters;
 		std::unique_ptr<map::Map> map;
-		uint32_t tick = 0;
+		uint32_t tick = 1;
 
 		void removeDeadCreatures();
 		

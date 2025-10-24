@@ -3,7 +3,7 @@
 
 using namespace sw::demo;
 
-bool Explosion::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool Explosion::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	if (armed)
 	{
@@ -11,10 +11,12 @@ bool Explosion::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> cr
 		for (auto& candidateId : candidateIds)
 		{
 			auto candidate = creatures[candidateId];
-			candidate->takeDamage(power);
+			if (candidate->takeDamage(power))
+			{
+				logDamageDealt(tick, creature, candidate, power);
+			}
 		}
 		creature->takeDamage(1);
-		std::cout<< "Mine " << creature->getId() << " exploded!" << std::endl;
 		return true;
 	}
 	auto candidateIds = map->lookupNeighbors(creature->getId(), activationRange);
@@ -22,7 +24,6 @@ bool Explosion::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> cr
 	{
 		return false;
 	}
-	std::cout<< "Mine " << creature->getId() << " gets armed!" << std::endl;
 	armed = true;
 	return true;
 }

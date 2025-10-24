@@ -2,9 +2,9 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
-#include <iostream>
-#include <ostream>
 #include <memory>
+#include <ostream>
+#include <utility>
 
 namespace sw::demo
 {
@@ -19,23 +19,15 @@ namespace sw::demo
 		std::string name;
 
 	public:
-		Creature(
-			uint32_t id,
-			uint32_t hp,
-			bool remoteAttackable,
-			bool meleeAttackable,
-			bool rigid,
-			const std::string& name) :
+		Creature(uint32_t id, uint32_t hp, bool remoteAttackable, bool meleeAttackable, bool rigid, std::string name) :
 				id(id),
 				hp(hp),
 				maxHp(hp),
 				remoteAttackable(remoteAttackable),
 				meleeAttackable(meleeAttackable),
 				rigid(rigid),
-				name(name)
-		{
-			std::cout << "Creature created: " << name << "[" << id << "]" << std::endl;
-		}
+				name(std::move(name))
+		{}
 
 		bool takeDamage(int damage);
 

@@ -5,11 +5,11 @@
 
 using namespace sw::demo;
 
-bool Character::turn(map::Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures)
+bool Character::turn(uint32_t tick, map::Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures)
 {
 	for (auto& intention : intentions)
 	{
-		if (intention->exec(map, creatures))
+		if (intention->exec(tick, map, creatures))
 		{
 			return true;
 		}
@@ -26,7 +26,6 @@ void Character::move(int targetX, int targetY)
 {
 	if (movePoints < 1)
 	{
-		std::cout << "Unit "<< creature->getId() << " is unable to move" << std::endl;
 		return;
 	}
 	std::erase_if(

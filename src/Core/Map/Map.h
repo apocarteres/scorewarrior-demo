@@ -2,8 +2,8 @@
 #ifndef MAP_H
 #define MAP_H
 #include "Cell.h"
+#include "IO/System/EventLog.hpp"
 
-#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -12,6 +12,7 @@ namespace sw::demo::map
 	class Map final
 	{
 		std::unique_ptr<Cell[]> field;
+		EventLog eventLog;
 
 		int width;
 		int height;

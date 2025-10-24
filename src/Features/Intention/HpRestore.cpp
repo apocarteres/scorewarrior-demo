@@ -3,7 +3,7 @@
 
 using namespace sw::demo;
 
-bool HpRestore::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool HpRestore::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	auto neighborIds = map->lookupNeighbors(creature->getId(), range);
 	if (neighborIds.empty())
@@ -15,10 +15,8 @@ bool HpRestore::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> cr
 		auto target = creatures[candidateId];
 		if (target->restoreHp(spirit))
 		{
-			std::cout << "Unit " << creature->getId() << " restored " << spirit << " health points for " << target->getId() << std::endl;
 			return true;
 		}
 	}
-	std::cout << "Unit " << creature->getId() << " has no eligible targets for restoring HP" << std::endl;
 	return false;
 }

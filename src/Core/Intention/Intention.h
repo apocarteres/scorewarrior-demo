@@ -2,8 +2,11 @@
 #ifndef INTENTION_H
 #define INTENTION_H
 
-#include "../Map/Map.h"
+#include "Core/Map/Map.h"
 #include "Core/Creature.h"
+#include "IO/Events/UnitAttacked.hpp"
+#include "IO/Events/UnitDied.hpp"
+#include "IO/System/EventLog.hpp"
 
 #include <ostream>
 #include <unordered_map>
@@ -15,6 +18,19 @@ namespace sw::demo
 	{
 	protected:
 		CreaturePtr creature;
+		EventLog eventLog;
+
+
+		void logDamageDealt(uint32_t tick, const CreaturePtr& attacker, const CreaturePtr& target, uint32_t damage)
+		{
+			auto hp = (uint32_t) target->getHp();
+			eventLog.log(tick, io::UnitAttacked{attacker->getId(), target->getId(), damage, hp});
+			if (hp == 0)
+			{
+				eventLog.log(tick, io::UnitDied{target->getId()});
+			}
+
+		}
 
 	public:
 		explicit Intention(CreaturePtr creature) :
@@ -23,7 +39,7 @@ namespace sw::demo
 
 		virtual ~Intention() = default;
 
-		virtual bool exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
+		virtual bool exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
 	};
 
 	typedef std::unique_ptr<Intention> IntentionPtr;

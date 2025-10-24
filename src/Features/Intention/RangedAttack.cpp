@@ -1,9 +1,11 @@
 
 #include "RangedAttack.h"
 
+#include "IO/Events/UnitAttacked.hpp"
+
 using namespace sw::demo;
 
-bool RangedAttack::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool RangedAttack::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	if (const auto neighbors = map->lookupNeighbors(creature->getId(), 1); !neighbors.empty())
 	{
@@ -17,15 +19,15 @@ bool RangedAttack::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr>
 		if (target->getName() == "Raven")
 		{
 			++d;
-			std::cout << "Unit " << creature->getId() << " detects Raven " << target->getId() << ", remote attack distance is reduced" << std::endl;
 		}
 		if (d >= 1 && d <= range)
 		{
-			target->takeDamage(power);
-			std::cout << "Unit " << creature->getId() << " remotely attacked " << target->getId() << std::endl;
-			return true;
+			if (target->takeDamage(power))
+			{
+				logDamageDealt(tick, creature, target, power);
+				return true;
+			}
 		}
 	}
-	std::cout << "Unit " << creature->getId() << " has no eligible targets for remote attack" << std::endl;
 	return false;
 }

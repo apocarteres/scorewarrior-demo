@@ -3,7 +3,7 @@
 
 using namespace sw::demo;
 
-bool MeleeAttack::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool MeleeAttack::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
 {
 	auto neighborIds = map->lookupNeighbors(creature->getId(), 1);
 	for (auto& neighborId : neighborIds)
@@ -11,12 +11,12 @@ bool MeleeAttack::exec(map::Map* map, std::unordered_map<uint32_t, CreaturePtr> 
 		auto neighbor = creatures[neighborId];
 		if (neighbor->isMeleeAttackable())
 		{
-			neighbor->takeDamage(power);
-			std::cout << "Applied melee attack from " << creature->getName() << " to " << neighbor->getId() << std::endl;
-			return true;
+			if (neighbor->takeDamage(power))
+			{
+				logDamageDealt(tick, creature, neighbor, power);
+				return true;
+			}
 		}
-		std::cout << "Melee attack from " << creature->getName() << " is not applicable to " << neighbor->getId() << std::endl;
 	}
-	std::cout << "No eligible units for melee attack for " << creature->getName() << std::endl;
 	return false;
 }

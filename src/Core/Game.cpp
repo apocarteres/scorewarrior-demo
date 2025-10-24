@@ -1,5 +1,10 @@
 
 #include "Game.h"
+
+#include "IO/Events/MapCreated.hpp"
+#include "IO/Events/MarchStarted.hpp"
+#include "IO/Events/UnitSpawned.hpp"
+
 #include <algorithm>
 
 using namespace sw::demo;
@@ -7,19 +12,7 @@ using namespace sw::demo;
 void Game::createMap(uint32_t width, uint32_t height)
 {
 	map = std::make_unique<map::Map>(width, height);
-	std::cout << "New map " << width << "x" << height << " has been created" << std::endl;
-}
-
-CharacterPtr Game::findCharacter(uint32_t id) const
-{
-	for (auto& character : characters)
-	{
-		if (character->getId() == id)
-		{
-			return character;
-		}
-	}
-	return nullptr;
+	eventLog.log(tick, io::MapCreated{width, height});
 }
 
 void Game::spawn(Character&& character, int x, int y)
@@ -33,8 +26,33 @@ void Game::spawn(Character&& character, int x, int y)
 	{
 		throw std::runtime_error("Can't spawn here, already occupied");
 	}
+	eventLog.log(tick, io::UnitSpawned{id, character.creature->getName(), (uint32_t) x, (uint32_t) y});
 	map->occupy(id, character.creature->isRigid(), x, y);
 	characters.push_back(std::make_shared<Character>(std::move(character)));
+}
+
+void Game::march(uint32_t id, int targetX, int targetY)
+{
+	auto character = findCharacter(id);
+	if (character == nullptr)
+	{
+		throw std::runtime_error("Creature not found");
+	}
+	auto xy = map->lookupObject(id);
+	character->move(targetX, targetY);
+	eventLog.log(tick, io::MarchStarted{id, (uint32_t) xy.x, (uint32_t) xy.y, (uint32_t) targetX, (uint32_t) targetY});
+}
+
+CharacterPtr Game::findCharacter(uint32_t id) const
+{
+	for (auto& character : characters)
+	{
+		if (character->getId() == id)
+		{
+			return character;
+		}
+	}
+	return nullptr;
 }
 
 void Game::removeDeadCreatures()
@@ -69,7 +87,7 @@ bool Game::turn()
 	}
 	for (auto& character : characters)
 	{
-		playable |= character->turn(map.get(), creatures);
+		playable |= character->turn(tick, map.get(), creatures);
 	}
 	++tick;
 	return playable;
@@ -89,15 +107,6 @@ void Game::debug() const
 	}
 }
 
-void Game::march(uint32_t id, int targetX, int targetY)
-{
-	auto charPtr = findCharacter(id);
-	if (charPtr == nullptr)
-	{
-		throw std::runtime_error("Creature not found");
-	}
-	charPtr->move(targetX, targetY);
-}
 
 int Game::getHpOf(uint32_t id) const
 {
