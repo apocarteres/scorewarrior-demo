@@ -1,8 +1,6 @@
 
 #include "RangedAttack.h"
 
-#include "IO/Events/UnitAttacked.hpp"
-
 using namespace sw::demo;
 
 bool RangedAttack::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
@@ -11,7 +9,8 @@ bool RangedAttack::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_
 	{
 		return false;
 	}
-	auto candidateIds = map->lookupNeighbors(creature->getId(), range);
+
+	auto candidateIds = map->lookupNeighbors(creature->getId(), 1+range);
 	for (auto& candidateId : candidateIds)
 	{
 		auto target = creatures[candidateId];
@@ -20,7 +19,7 @@ bool RangedAttack::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_
 		{
 			++d;
 		}
-		if (d >= 1 && d <= range)
+		if (d >= 1 && d <= 1+range)
 		{
 			if (target->takeDamage(power))
 			{

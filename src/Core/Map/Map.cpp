@@ -212,9 +212,7 @@ void Map::release(uint32_t id)
 
 int Map::distance(uint32_t src_id, uint32_t dst_id) const
 {
-	auto src_point = lookupObject(src_id);
-	auto dst_point = lookupObject(dst_id);
-	int mod_x = static_cast<int>(std::floor(std::pow(std::abs(dst_point.x - src_point.x), 2)));
-	int mod_y = static_cast<int>(std::floor(std::pow(std::abs(dst_point.y - src_point.y), 2)));
-	return static_cast<int>(std::floor(std::sqrt(mod_y + mod_x)));
+	auto src = lookupObject(src_id);
+	auto dst = lookupObject(dst_id);
+	return std::abs(src.x - dst.x + std::abs(src.y - dst.y)) / 2;
 }

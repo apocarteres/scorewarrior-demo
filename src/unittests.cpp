@@ -168,10 +168,12 @@ void mapNeighborsIncludeShadows()
 
 void mapCalcsDistanceCorrectly()
 {
-	Map map{3, 3};
-	map.occupy(100, false, 0, 0);
-	map.occupy(101, true, 2, 2);
-	assert(2 == map.distance(100, 101));
+	Map map{10, 10};
+	map.occupy(100, false, 5, 0);
+	map.occupy(101, true, 0, 4);
+	int distance = map.distance(100, 101);
+	std::cout<<"distance: "<<distance<<std::endl;
+	assert(4 == distance);
 }
 
 void characterSwordsmanCanAttackInRange()
@@ -223,7 +225,7 @@ void characterHunterCanNotAttackRavenInRangeDueToRavenPenalty()
 	Game game;
 	game.createMap(10, 10);
 	game.spawn(Hunter{1, 10, 5, 3, 10}, 5, 5);
-	game.spawn(Raven{2, 7, 1}, 2, 2);
+	game.spawn(Raven{2, 7, 1}, 1, 1);
 	assert(7 == game.getHpOf(2));
 	game.turn();
 	assert(7 == game.getHpOf(2));

@@ -74,6 +74,7 @@ void Game::removeDeadCreatures()
 
 bool Game::turn()
 {
+	++tick;
 	removeDeadCreatures();
 	if (characters.size() <= 1)
 	{
@@ -89,7 +90,6 @@ bool Game::turn()
 	{
 		playable |= character->turn(tick, map.get(), creatures);
 	}
-	++tick;
 	return playable;
 }
 
