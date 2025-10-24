@@ -3,3 +3,5 @@
    Это возможно благодаря композиции из Intententions и атрибутам Creature, все это можно описать в JSON вместо С++ кода.
 2. Добавить в IO/Commands команды для спавна Mine/Tower/Raven/Healer. Эти персонажи поддерживаются, 
    нужно просто добавить пожжержку в парсер.
+3. Класс Game каждый ход собирает реестр из Creatures (std::unordered_map<uint32_t, CreaturePtr> creatures), так
+   быть не должно, нужен отдельный класс типа CreaturesRegistry
