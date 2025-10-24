@@ -4,18 +4,19 @@
 
 #include "Character.h"
 
-#include <unordered_map>
+#include <vector>
 
 namespace sw::demo
 {
 	class Game
 	{
-		std::unordered_map<uint32_t, CharacterPtr> characters;
+		std::vector<CharacterPtr> characters;
 		std::unique_ptr<map::Map> map;
 		uint32_t tick = 0;
 
 	protected:
 		void removeDeadCreatures();
+		CharacterPtr findCharacter(uint32_t id);
 
 	public:
 		void createMap(uint32_t width, uint32_t height);

@@ -29,7 +29,7 @@ namespace sw::demo
 		void move(int target_x, int target_y);
 	};
 
-	typedef std::unique_ptr<Character> CharacterPtr;
+	typedef std::shared_ptr<Character> CharacterPtr;
 }
 
 #endif	//CHARACTER_H
