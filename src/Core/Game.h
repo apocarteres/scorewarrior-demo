@@ -13,12 +13,13 @@ namespace sw::demo
 		std::unique_ptr<Map> map;
 		uint32_t tick = 0;
 
+	protected:
+		void removeDeadCreatures();
+
 	public:
 		void createMap(uint32_t width, uint32_t height);
 
 		void spawn(Character&& character, int x, int y);
-
-		void removeDeadCreatures();
 
 		bool turn();
 

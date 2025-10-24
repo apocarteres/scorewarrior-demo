@@ -111,7 +111,7 @@ void mapLooksUpNeighborsWithExceptOfSourceCell()
 	Map map{3, 3};
 	map.occupy(100, true, 1, 1);
 	auto neighbors = map.lookupNeighbors(1, 1, 1);
-	assert(0 == neighbors.size());
+	assert(neighbors.empty());
 }
 
 void mapMovesRigidObjectIfTargetCellIsAvailable()
@@ -240,6 +240,7 @@ void characterMineGetsArmedAndAttacksUnitsInRange()
 	assert(7 == game.getHpOf(2));
 	assert(7 == game.getHpOf(3));
 	game.turn();
+	assert(0 == game.getHpOf(1));
 	assert(0 == game.getHpOf(2));
 	assert(0 == game.getHpOf(3));
 }
