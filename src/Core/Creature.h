@@ -53,6 +53,7 @@ namespace sw::demo
 	};
 
 	typedef std::shared_ptr<Creature> CreaturePtr;
+	typedef std::unordered_map<uint32_t, CreaturePtr> CreaturesContainer;
 }
 
 #endif	//CREATURE_H

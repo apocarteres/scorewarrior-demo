@@ -5,7 +5,7 @@
 
 using namespace sw::demo;
 
-bool Character::turn(uint32_t tick, map::Map* map, const std::unordered_map<uint32_t, CreaturePtr>& creatures)
+bool Character::turn(uint32_t tick, map::Map* map, const CreaturesContainer& creatures)
 {
 	for (auto& intention : intentions)
 	{

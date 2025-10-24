@@ -81,7 +81,7 @@ bool Game::turn()
 		return false;
 	}
 	bool playable = false;
-	std::unordered_map<uint32_t, CreaturePtr> creatures;
+	CreaturesContainer creatures;
 	for (auto& character : characters)
 	{
 		creatures.emplace(character->getId(), character->creature);

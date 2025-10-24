@@ -39,7 +39,7 @@ namespace sw::demo
 
 		virtual ~Intention() = default;
 
-		virtual bool exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) = 0;
+		virtual bool exec(uint32_t tick, map::Map* map, CreaturesContainer creatures) = 0;
 	};
 
 	typedef std::unique_ptr<Intention> IntentionPtr;

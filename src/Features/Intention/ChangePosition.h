@@ -19,7 +19,7 @@ namespace sw::demo
 				movePoints(movePoints)
 		{}
 
-		bool exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures) override;
+		bool exec(uint32_t tick, map::Map* map, CreaturesContainer creatures) override;
 	};
 }
 

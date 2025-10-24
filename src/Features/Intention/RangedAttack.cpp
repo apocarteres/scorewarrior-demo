@@ -3,7 +3,7 @@
 
 using namespace sw::demo;
 
-bool RangedAttack::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool RangedAttack::exec(uint32_t tick, map::Map* map, CreaturesContainer creatures)
 {
 	if (const auto neighbors = map->lookupNeighbors(creature->getId(), 1); !neighbors.empty())
 	{

@@ -3,7 +3,7 @@
 
 using namespace sw::demo;
 
-bool Explosion::exec(uint32_t tick, map::Map* map, std::unordered_map<uint32_t, CreaturePtr> creatures)
+bool Explosion::exec(uint32_t tick, map::Map* map, CreaturesContainer creatures)
 {
 	if (armed)
 	{
