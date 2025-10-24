@@ -1,7 +1,7 @@
 
 #ifndef CHANGEPOSITION_H
 #define CHANGEPOSITION_H
-#include "../../Core/Intention/Intention.h"
+#include "Core/Intention/Intention.h"
 
 namespace sw::demo
 {

@@ -1,7 +1,7 @@
 
 #ifndef MELEEATTACK_H
 #define MELEEATTACK_H
-#include "../../Core/Intention/Intention.h"
+#include "Core/Intention/Intention.h"
 
 namespace sw::demo
 {
