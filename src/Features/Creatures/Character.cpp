@@ -20,8 +20,13 @@ uint32_t Character::getId() const
 
 void Character::move(int target_x, int target_y)
 {
+	if (movePoints < 1)
+	{
+		std::cout << "Unit "<< creature->getId() << " is unable to move" << std::endl;
+		return;
+	}
 	std::erase_if(
 		intentions,
 		[](const std::unique_ptr<Intention>& ptr) { return dynamic_cast<ChangePosition*>(ptr.get()) != nullptr; });
-	intentions.push_back(std::make_unique<ChangePosition>(target_x, target_y, creature));
+	intentions.push_back(std::make_unique<ChangePosition>(target_x, target_y, movePoints, creature));
 }

@@ -78,3 +78,8 @@ void Game::march(uint32_t id, int target_x, int target_y)
 {
 	characters[id]->move(target_x, target_y);
 }
+
+int Game::getHpOf(uint32_t id)
+{
+	return characters[id]->creature->getHp();
+}

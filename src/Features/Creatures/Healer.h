@@ -8,7 +8,7 @@ class Healer: public Character
 {
 public:
 	Healer(uint32_t id, uint32_t hp, int spirit) :
-			Character(id, "Healer", hp)
+			Character(id, "Healer", hp, true, 1, true)
 	{
 		intentions.push_back(std::make_unique<HpRestore>(spirit, 2, creature));
 	}

@@ -12,7 +12,12 @@ bool RangedAttack::exec(Map* map, std::unordered_map<uint32_t, CreaturePtr> crea
 	{
 		auto target = creatures[candidateId];
 		auto d = map->distance(creature->getId(), target->getId());
-		if (d > 1 && d <= range)
+		if (target->getName() == "Raven")
+		{
+			++d;
+			std::cout << "Unit " << creature->getId() << " detects Raven " << target->getId() << ", remote attack distance is reduced" << std::endl;
+		}
+		if (d >= 1 && d <= range)
 		{
 			target->takeDamage(power);
 			std::cout << "Unit " << creature->getId() << " remotely attacked " << target->getId() << std::endl;

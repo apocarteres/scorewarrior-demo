@@ -24,6 +24,8 @@ public:
 	void debug();
 
 	void march(uint32_t id, int target_x, int target_y);
+
+	int getHpOf(uint32_t id);
 };
 
 #endif	//GAME_H
