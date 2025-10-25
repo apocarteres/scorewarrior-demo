@@ -39,8 +39,10 @@ void Game::march(uint32_t id, int targetX, int targetY)
 		throw std::runtime_error("Creature not found");
 	}
 	auto xy = map->lookupObject(id);
-	character->move(targetX, targetY);
-	eventLog.log(tick, io::MarchStarted{id, (uint32_t) xy.x, (uint32_t) xy.y, (uint32_t) targetX, (uint32_t) targetY});
+	if (character->move(targetX, targetY))
+	{
+		eventLog.log(tick, io::MarchStarted{id, (uint32_t) xy.x, (uint32_t) xy.y, (uint32_t) targetX, (uint32_t) targetY});
+	}
 }
 
 CharacterPtr Game::findCharacter(uint32_t id) const

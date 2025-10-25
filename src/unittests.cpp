@@ -4,6 +4,7 @@
 #include "Features/Character/Mine.h"
 #include "Features/Character/Raven.h"
 #include "Features/Character/Swordsman.h"
+#include "Features/Character/Tower.h"
 
 #include <cassert>
 
@@ -174,6 +175,26 @@ void mapCalcsDistanceCorrectly()
 	assert(6 == map.distance(100, 101));
 }
 
+void gameFinishesOnceNoIntentionsScheduled()
+{
+	Game game;
+	game.createMap(10, 10);
+	game.spawn(Swordsman{1, 7, 1}, 9, 9);
+	game.spawn(Mine{2, 10}, 0, 0);
+	game.march(2, 1, 1);
+	//since Mine is not movable, no active intentions should be scheduled
+	assert(false == game.turn());
+}
+
+void gameFinishesOnceOnlySingleUnitRemained()
+{
+	Game game;
+	game.createMap(10, 10);
+	game.spawn(Swordsman{1, 7, 1}, 9, 9);
+	game.march(1, 1, 1);
+	assert(false == game.turn());
+}
+
 void characterSwordsmanCanAttackInRange()
 {
 	Game game;
@@ -247,9 +268,41 @@ void characterMineGetsArmedAndAttacksUnitsInRange()
 	assert(0 == game.getHpOf(3));
 }
 
+void characterMineIsUnableToMove()
+{
+	Mine mine{1, 10};
+	assert(false == mine.move(1, 1));
+}
+
+void characterMineCanNotBeAttackedRemotely()
+{
+	Game game;
+	game.createMap(10, 10);
+	game.spawn(Mine{1, 10}, 5, 5);
+	game.spawn(Hunter{2, 7, 1, 10, 10}, 2, 2);
+	assert (false == game.turn());
+}
+
+void characterMineCanNotBeAttackedMelee()
+{
+	Game game;
+	game.createMap(10, 10);
+	game.spawn(Swordsman{1, 7, 10}, 4, 4);
+	game.spawn(Mine{2, 10}, 5, 5);
+	game.turn();//mine armed
+	game.turn();//mine exploded
+	assert(0 == game.getHpOf(1));
+}
+
+void characterTowerIsUnableToMove()
+{
+	Tower tower{1, 10, 10};
+	assert(false == tower.move(1, 1));
+}
+
 void runUnitTests()
 {
-	std::cout<<"====== RUNNING UNIT TESTS =======" <<std::endl;
+	std::cout << "====== RUNNING UNIT TESTS =======" << std::endl;
 	mapCellIsAvailableByDefault();
 	mapCellIsValidIfInRange();
 	mapCellIsInValidIfOutOfRangeByXPositive();
@@ -273,5 +326,11 @@ void runUnitTests()
 	characterHunterAttacksRavenInRangeWithRemoteAttack();
 	characterHunterCanNotAttackRavenInRangeDueToRavenPenalty();
 	characterMineGetsArmedAndAttacksUnitsInRange();
-	std::cout<<"====== FINISHED RUNNING UNIT TESTS =======" <<std::endl;
+	characterMineIsUnableToMove();
+	gameFinishesOnceNoIntentionsScheduled();
+	gameFinishesOnceOnlySingleUnitRemained();
+	characterTowerIsUnableToMove();
+	characterMineCanNotBeAttackedRemotely();
+	characterMineCanNotBeAttackedMelee();
+	std::cout << "====== FINISHED RUNNING UNIT TESTS =======" << std::endl;
 }

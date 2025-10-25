@@ -22,14 +22,15 @@ uint32_t Character::getId() const
 	return creature->getId();
 }
 
-void Character::move(int targetX, int targetY)
+bool Character::move(int targetX, int targetY)
 {
 	if (movePoints < 1)
 	{
-		return;
+		return false;
 	}
 	std::erase_if(
 		intentions,
 		[](const std::unique_ptr<Intention>& ptr) { return dynamic_cast<ChangePosition*>(ptr.get()) != nullptr; });
 	intentions.push_back(std::make_unique<ChangePosition>(targetX, targetY, movePoints, creature));
+	return true;
 }

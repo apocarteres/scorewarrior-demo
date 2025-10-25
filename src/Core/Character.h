@@ -25,7 +25,7 @@ namespace sw::demo
 		[[nodiscard]]
 		uint32_t getId() const;
 
-		void move(int targetX, int targetY);
+		bool move(int targetX, int targetY);
 	};
 
 	typedef std::shared_ptr<Character> CharacterPtr;
