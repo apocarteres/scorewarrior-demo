@@ -222,8 +222,8 @@ void characterHunterCanNotAttackRavenInRangeDueToRavenPenalty()
 {
 	Game game;
 	game.createMap(10, 10);
-	game.spawn(Hunter{1, 10, 5, 3, 10}, 5, 5);
-	game.spawn(Raven{2, 7, 1}, 1, 1);
+	game.spawn(Hunter{1, 10, 5, 4, 10}, 5, 5);
+	game.spawn(Raven{2, 7, 1}, 2, 2);
 	assert(7 == game.getHpOf(2));
 	game.turn();
 	assert(7 == game.getHpOf(2));
