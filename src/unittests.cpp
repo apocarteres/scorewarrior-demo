@@ -300,6 +300,19 @@ void characterTowerIsUnableToMove()
 	assert(false == tower.move(1, 1));
 }
 
+void characterTowerCanNotAttackLevel1Neighbors()
+{
+	Game game;
+	game.createMap(10, 10);
+	game.spawn(Swordsman{1, 10, 2}, 5, 5);
+	game.spawn(Tower{2, 6, 1}, 4, 4);
+	game.turn();//Swordsman hits 2, tower's HP 4
+	game.turn();//Swordsman hits 2, tower's HP 2
+	game.turn();//Swordsman hits 2, tower's HP 0
+	assert(10 == game.getHpOf(1));
+	assert(0 == game.getHpOf(2));
+}
+
 void runUnitTests()
 {
 	std::cout << "====== RUNNING UNIT TESTS =======" << std::endl;
@@ -322,6 +335,7 @@ void runUnitTests()
 	mapCalcsDistanceCorrectly();
 	mapMovesObjectsOnlyWithinRange();
 	characterSwordsmanCanAttackInRange();
+	characterSwordsmanCanNotAttackOutOfRange();
 	characterHunterAttacksSwordsmanInRangeWithRemoteAttack();
 	characterHunterAttacksRavenInRangeWithRemoteAttack();
 	characterHunterCanNotAttackRavenInRangeDueToRavenPenalty();
@@ -332,5 +346,6 @@ void runUnitTests()
 	characterTowerIsUnableToMove();
 	characterMineCanNotBeAttackedRemotely();
 	characterMineCanNotBeAttackedMelee();
+	characterTowerCanNotAttackLevel1Neighbors();
 	std::cout << "====== FINISHED RUNNING UNIT TESTS =======" << std::endl;
 }

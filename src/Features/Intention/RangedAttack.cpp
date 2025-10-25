@@ -19,7 +19,7 @@ bool RangedAttack::exec(uint32_t tick, map::Map* map, CreaturesContainer creatur
 		{
 			++d;
 		}
-		if (d >= 1 && d <= range)
+		if (d >= MIN_ATTACK_RANGE && d <= range)
 		{
 			if (target->takeDamage(power))
 			{

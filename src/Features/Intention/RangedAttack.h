@@ -5,6 +5,8 @@
 
 namespace sw::demo
 {
+	#define MIN_ATTACK_RANGE (2)
+
 	class RangedAttack final : public Intention
 	{
 		int power;
