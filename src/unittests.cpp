@@ -8,6 +8,8 @@
 
 #include <cassert>
 
+//run tests: ./sw_battle_test --test
+
 using namespace sw::demo;
 
 using map::Map;

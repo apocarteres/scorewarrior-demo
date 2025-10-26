@@ -19,7 +19,6 @@ namespace sw::demo
 		CreaturePtr creature;
 		EventLog eventLog;
 
-
 		void logDamageDealt(uint32_t tick, const CreaturePtr& attacker, const CreaturePtr& target, uint32_t damage)
 		{
 			auto hp = (uint32_t) target->getHp();
@@ -28,7 +27,6 @@ namespace sw::demo
 			{
 				eventLog.log(tick, io::UnitDied{target->getId()});
 			}
-
 		}
 
 	public:
