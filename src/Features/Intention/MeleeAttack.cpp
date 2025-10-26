@@ -3,20 +3,22 @@
 
 using namespace sw::demo;
 
-bool MeleeAttack::exec(uint32_t tick, map::Map* map, CreaturesContainer creatures)
+bool MeleeAttack::exec(uint32_t tick, map::Map* map, const CreaturesContainer& creatures)
 {
 	auto neighborIds = map->lookupNeighbors(creature->getId(), 1);
 	for (auto& neighborId : neighborIds)
 	{
-		auto neighbor = creatures[neighborId];
-		if (neighbor->isMeleeAttackable())
+		const auto& neighbor = creatures.at(neighborId);
+		if (!neighbor->isMeleeAttackable())
 		{
-			if (neighbor->takeDamage(power))
-			{
-				logDamageDealt(tick, creature, neighbor, power);
-				return true;
-			}
+			continue;
 		}
+		if (!neighbor->takeDamage(power))
+		{
+			continue;
+		}
+		logDamageDealt(tick, creature, neighbor, power);
+		return true;
 	}
 	return false;
 }

@@ -15,7 +15,7 @@ namespace sw::demo
 				power(power)
 		{}
 
-		bool exec(uint32_t tick, map::Map* map, CreaturesContainer creatures) override;
+		bool exec(uint32_t tick, map::Map* map, const CreaturesContainer& creatures) override;
 	};
 }
 

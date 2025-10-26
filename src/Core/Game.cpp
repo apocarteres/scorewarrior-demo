@@ -82,12 +82,12 @@ bool Game::turn()
 	{
 		return false;
 	}
-	bool playable = false;
 	CreaturesContainer creatures;
 	for (auto& character : characters)
 	{
 		creatures.emplace(character->getId(), character->creature);
 	}
+	bool playable = false;
 	for (auto& character : characters)
 	{
 		playable |= character->turn(tick, map.get(), creatures);

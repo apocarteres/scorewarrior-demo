@@ -23,7 +23,7 @@ namespace sw::demo
 				armed(false)
 		{}
 
-		bool exec(uint32_t tick, map::Map* map, CreaturesContainer creatures) override;
+		bool exec(uint32_t tick, map::Map* map, const CreaturesContainer& creatures) override;
 	};
 }
 #endif	//EXPLOSION_H
